@@ -1,0 +1,24 @@
+<div id="categoriesPage">
+<?php foreach($this->data['categories'] as $category): ?>
+<div id="categories" class="card" style="width: 45rem;">
+  <div class="card-body"><br/>
+    <h1 class="card-title"><?= htmlentities($category->getTitle()) ?></h1><br/>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <!--<a href="?= $this->generateUri('category', ['id' => htmlentities($category->getId())]) ?>" class="card-link">En savoir plus</a>-->
+    <a href="<?= $this->generateUri('products_categories', 
+    ['category_id' => htmlentities($category->getId()),
+    'id' => htmlentities($this->currentUser->getId())
+    ]) ?>" class="card-link">
+      En savoir plus</a>
+  </div>
+</div>
+
+<?php endforeach; ?>
+
+</div>
+
+
+
+
+
+

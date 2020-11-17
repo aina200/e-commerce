@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="<?= $this->parameters->get('default_locale') ?>>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Framewa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css" type="text/css">
+   <link rel="stylesheet" href="./assets/css/app.css" type="text/css">
+   
+</head>
+<body>
+  <header>
+ <nav id="navBar" class="navbar navbar-expand-lg navbar-dark bg-dark"style="height: 100px;">
+   <a class="navbar-brand" href="<?= $this->generateUri('homepage',
+   ['id' => 2]) ?>">Acceuil</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+       <?php if($this->currentUser === null): ?>
+      <li class="nav-item active">
+        <a class="nav-link active"  href="<?= $this->generateUri('register') ?>">S'inscrire <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="<?= $this->generateUri('login') ?>">Se connecter</a>
+      </li>
+      <?php else: ?>
+      <li class="nav-item dropdown">
+         <a class="nav-link active" href="<?= $this->generateUri('logout') ?>">Déconnexion</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="<?= $this->generateUri('categories',
+       ['id' => htmlentities($this->currentUser->getId())]) ?>">Categories</a>
+      </li>
+       <li class="nav-item">
+       <a class="nav-link active" href="<?= $this->generateUri('products',
+       ['id' => htmlentities($this->currentUser->getId())]) ?>">Produits</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0 text-white">
+      <a class="nav-link active" href="#"><i class="fas fa-user"></i> <?= $this->currentUser->getNickname() ?></a>
+      
+     <a class="nav-link active" href="<?= $this->generateUri('cart', 
+     ['id' => htmlentities($this->currentUser->getId())]) ?>"><i class="fas fa-shopping-cart"></i>
+     Panier <?= $this->data['count'] ?></a></li>
+      
+    </form>
+     <?php endif; ?>
+  </div>
+</nav>
+ </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <main>
+    <?php require $this->templatePath; ?>
+  </main>
+
+  <footer>
+ <div id="footer" class="card text-white bg-dark mb-3" style="height: 150px;max-width: 180rem;">
+  <div class="card-header">Footer</div>
+  <div class="card-body">
+    <h5 class="card-title">Suspendisse  vitae dolor</h5>
+    <p class="card-text">Lorem ipsum dolor sit amet, Proin tempus sodales ex. Suspendisse  vitae dolor tempor egestas in non nisl.</p>
+  </div>
+</div>
+  </footer>
+</body>
+</html>

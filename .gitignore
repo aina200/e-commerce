@@ -1,0 +1,6 @@
+/.idea/
+
+/.database/
+/config/database.php
+
+/vendor/

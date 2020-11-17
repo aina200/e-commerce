@@ -1,0 +1,34 @@
+<div  class="boot d-flex justify-content-center  flex-wrap">
+<?php foreach($this->data['products'] as $product): ?>
+<div id="product" class="card d-flex justify-content-center" style="width: 50rem;">
+  
+  <img id="imgProducts" src="<?= htmlentities($product->getSrc_img()) ?>">
+  <div class="card-body">
+    <a href="<?= $this->generateUri('product', ['product_id' => htmlentities($product->getId()),
+    'id' => htmlentities($this->currentUser->getId())]) ?>" 
+    class="card-link">En savoir plus</a>
+    <h2 class="card-title"><?= htmlentities($product->getTitle()) ?></h2>
+    <p class="card-text"><?= htmlentities($product->getDescription()) ?></p>
+    <p> <?= htmlentities($product->getValue()) ?>euros</p>
+    <p>Il en reste <?= htmlentities($product->getStock()) ?><br/><br/>
+    <div class="boot2">
+      
+      
+      
+    <a class="btn btn-dark rounded-pill border border-white" style="width: 20rem;height: 30px;"
+     href="<?= $this->generateUri('addProductPageProducts',
+     ['product_id' => htmlentities($product->getId()), 
+     'cart_id' => htmlentities($this->currentUser->getId()),
+     'id' => htmlentities($this->currentUser->getId())
+     ]) ?>"> Ajouter au Panier</a>
+     
+   
+     
+   </div>
+  </div>
+</div>
+<?php endforeach; ?>
+</div>
+
+
+

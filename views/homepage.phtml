@@ -1,0 +1,15 @@
+
+<div class="card bg-dark text-white">
+  <img src="https://images.pexels.com/photos/3952078/pexels-photo-3952078.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="card-img" alt="bibléotheque">
+  <div class="card-img-overlay">
+    <h3 class="card-title">Achats en ligne</h3>
+    <h4 class="card-text">Le secret pour obtenir les meilleurs prix </h4>
+    <?php if($this->currentUser === null): ?>
+    <button id="homePageButton" type="button" class="btn btn-primary btn-lg bg-dark" >
+      <a href="<?= $this->generateUri('login') ?>" >Se connecter</a></button>
+    <?php else: ?>
+    <button id="homePageButton" type="button" class="btn btn-primary btn-lg bg-dark" >
+      <a href="<?= $this->generateUri('products') ?>">Commencer</a></button>
+     <?php endif; ?>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div  class="d-flex justify-content-center">
+<?php foreach($this->data['products_categories'] as $product): ?>
+<div id="product" class="card d-flex justify-content-center" style="width: 50rem;">
+  
+  <img id="imgProducts" src="<?= htmlentities($product->getSrc_img()) ?>">
+  <div class="card-body">
+    <a href="<?= $this->generateUri('product', ['product_id' => htmlentities($product->getId()),
+    'id' => htmlentities($this->currentUser->getId())
+    ]) ?>" class="card-link">
+      En savoir plus </a>
+    <h1 class="card-title"><?= htmlentities($product->getTitle()) ?></h1>
+    <p class="card-text"><?= htmlentities($product->getDescription()) ?></p>
+    <p> <?= htmlentities($product->getValue()) ?>euros</p>
+    <p>Il en reste <?= htmlentities($product->getStock()) ?><br/><br/>
+   
+   <?php if($this->currentUser !== null): ?>
+   
+     <a class="btn btn-dark rounded-pill border border-white" style="width: 20rem;height: 30px;"
+     href="<?= $this->generateUri('addProduct',
+     ['product_id' => htmlentities($product->getId()), 
+     'cart_id' => htmlentities($this->currentUser->getId()),
+     'id' => htmlentities($_GET['id'])]) ?>"> Ajouter au Panier</a>
+     
+     
+   <?php endif;?>
+  
+  </div>
+</div>
+<?php endforeach; ?>
+</div>
+
+

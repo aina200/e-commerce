@@ -1,0 +1,25 @@
+<a  href="#">Salut <?= $this->currentUser->getNickname() ?></a>
+<p>L'id du panier es: <?= $this->data['user_id'] ?></p>
+
+<?php foreach($this->data['cartProducts'] as $product): ?>
+
+
+<div id="product" class="card d-flex justify-content-center" style="width: 50rem;">
+  
+  <h2 class="card-title"><?= htmlentities($product->getTitle()) ?></h2>
+  <p> <?= htmlentities($product->getValue()) ?>euros</p>
+  <p> <?= htmlentities($product->getId()) ?></p>
+</div>
+
+<a href="<?= $this->generateUri('deleteProduct',
+['products_carts_id' => htmlentities($product->getId()),
+'id' => htmlentities($this->currentUser->getId())]
+)?>"
+<button>Supprimer</button></a>
+
+   
+ 
+
+<?php endforeach; ?>
+
+
